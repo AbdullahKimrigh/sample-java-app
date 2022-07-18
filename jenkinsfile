@@ -21,7 +21,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/var/lib/jenkins/workspace/sample-java-maven/target/surefire-reports/TEST-*.xml'
+                    junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '**/Target/**.war', followSymlinks: false
+                    archiveArtifacts artifacts: '**/target/**.war', followSymlinks: false
                 }
             }
         }
