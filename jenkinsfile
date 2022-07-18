@@ -19,7 +19,6 @@ pipeline {
             steps {
                 sh "mvn test"
             }
-
             post {
                 always {
                     junit '**/Target/surefire-report/TEST-*.xml'
@@ -31,7 +30,6 @@ pipeline {
             steps {
                 sh "mvn package"
             }
-
             post {
                 success {
                     archiveArtifacts artifacts: '**/Target/**.war', followSymlinks: false
