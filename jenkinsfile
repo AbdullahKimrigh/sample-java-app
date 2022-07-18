@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('validate') {
+            steps {
+                sh "mvn validate"
+                sh "mvn clean"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh "mvn test"
+            }
+
+            post {
+                always {
+                    junit '**/Target/surefire-report/TEST-*.xml'
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh "mvn package"
+            }
+
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/Target/**.war', followSymlinks: false
+                }
+            }
+        }
+    }
+}
