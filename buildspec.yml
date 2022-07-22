@@ -26,6 +26,10 @@ phases:
     - mvn package
     - mv target/*.war ROOT.war
     - echo Build ends on 'date'
+  Run_test:
+    on-failure: ABORT
+    commands:
+    - aws codepipeline start-pipeline-execution --name Selenium-pipeline
 
 artifacts:
   files:
