@@ -1,4 +1,8 @@
 FROM openjdk:8-jdk-alpine
+FROM maven:latest
+
+COPY pom.xml .
+COPY src .
 
 VOLUME /tmp
 
@@ -6,7 +10,8 @@ ARG JAVA_OPTS
 
 ENV JAVA_OPTS=$JAVA_OPTS
 
-COPY helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
+COPY ${JAR_FILE} /app.jar
+# COPY target/helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
 
 EXPOSE 3000
 
