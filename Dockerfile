@@ -5,7 +5,7 @@ ENV JAVA_OPTS=$JAVA_OPTS
 RUN mkdir /project
 COPY . /project
 WORKDIR /project
-COPY build/libs/helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
+COPY helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
 
 EXPOSE 3000
 ENTRYPOINT exec java $JAVA_OPTS -jar helloworld-1.0-SNAPSHOT.jar
