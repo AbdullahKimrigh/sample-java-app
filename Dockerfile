@@ -8,7 +8,6 @@ FROM openjdk:11
 RUN mkdir /project
 COPY . /project
 WORKDIR /project
-RUN mvn clean package -DskipTests
 CMD ["java", "-jar", "target/helloworld-1.0-SNAPSHOT.jar"]
 
 EXPOSE 3000
