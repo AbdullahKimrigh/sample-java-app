@@ -1,12 +1,9 @@
-FROM node:latest
-LABEL author: abdullahkimrigh
-
-COPY . /var/www
-WORKDIR /var/www
-
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAVA_OPTS
+ENV JAVA_OPTS=$JAVA_OPTS
+COPY target/helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
 EXPOSE 3000
-
-RUN npm install
-
-CMD ["npm", "start"]
-VOLUME [/var/www]
+ENTRYPOINT exec java $JAVA_OPTS -jar dockerworkspace.jar
+# For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
+#ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar dockerworkspace.jar
