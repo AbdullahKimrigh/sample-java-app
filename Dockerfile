@@ -1,4 +1,7 @@
 FROM openjdk:11
+COPY ./configs /configs
+COPY src .
+COPY main /main
 VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
