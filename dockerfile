@@ -1,5 +1,4 @@
 FROM openjdk:8-jdk-alpine
-FROM maven:latest
 
 COPY pom.xml .
 COPY src .
