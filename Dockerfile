@@ -3,9 +3,9 @@ VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
 RUN mkdir myapp
-COPY ./.config myapp
-COPY ./.procps myapp
-COPY ./.profile myapp
+COPY ../.config myapp
+COPY ../.procps myapp
+COPY ../.profile myapp
 
 COPY target/helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
 EXPOSE 3000
