@@ -2,7 +2,7 @@ FROM openjdk:11
 VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
-WORKDIR /target/
+WORKDIR /target
 COPY helloworld-1.0-SNAPSHOT.jar dockerworkspace.jar
 EXPOSE 3000
 ENTRYPOINT exec java $JAVA_OPTS -jar dockerworkspace.jar
