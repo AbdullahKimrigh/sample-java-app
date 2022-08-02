@@ -6,7 +6,7 @@ ARG JAVA_OPTS
 
 ENV JAVA_OPTS=$JAVA_OPTS
 
-COPY ../helloworld-1.0-SNAPSHOT.war dockerworkspace.war
+COPY helloworld-1.0-SNAPSHOT.war dockerworkspace.war
 
 EXPOSE 3000
 
